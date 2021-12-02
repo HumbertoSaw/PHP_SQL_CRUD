@@ -41,10 +41,55 @@
                     <input type="submit" name="save_data" class="btn btn-success btn-block mt-3" value="Guardar">
                 </form>
             </div>
+        </div>
         
+        <div class="col-md-8"> 
+             <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No. Control</th>
+                        <th>Nombre</th>
+                        <th>Apellido Pat.</th>
+                        <th>Apellido Mat.</th>
+                        <th>Fecha Nac.</th>
+                        <th>Numero Tel</th>
+                        <th>Numero Cel.</th>
+                        <th>Direccion</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <?php 
+                        $query = "SELECT * FROM alumnos";
+                        $result_alumnos = mysqli_query($conn, $query);
+
+                        while($row = mysqli_fetch_array($result_alumnos)){ ?>
+
+                        <tr>
+                            <td> <?php echo $row['Num_Control']  ?> </td>
+                            <td> <?php echo $row['Nombre']  ?> </td>
+                            <td> <?php echo $row['Ape1']  ?> </td>
+                            <td> <?php echo $row['Ape2']  ?> </td>
+                            <td> <?php echo $row['Fecha_Nac']  ?> </td>
+                            <td> <?php echo $row['Num_Tel']  ?> </td>
+                            <td> <?php echo $row['Num_Cel']  ?> </td>
+                            <td> <?php echo $row['Direccion']  ?> </td>
+                            <td>
+                                <a class="btn btn-secondary mt-1" href="edit_data.php?Num_Control=<?php echo $row['Num_Control'] ?>">
+                                    <i class="fas fa-marker"></i>
+                                </a>
+                                <a class="btn btn-danger mt-1" href="delete_data.php?Num_Control=<?php echo $row['Num_Control'] ?>">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    <?php  } ?>
+                </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 
 <?php include("includes/footer.php")?>
