@@ -23,7 +23,7 @@ if(isset($_POST['save_data'])){
     }
     echo "La informacion ah sido guardada";
 
-    $_SESSION['message'] = 'Informacion guardada';
+    $_SESSION['message'] = 'Informacion Guardada';
     $_SESSION['message_type'] = 'success';
 
     header("Location: index.php");
