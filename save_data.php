@@ -22,5 +22,10 @@ if(isset($_POST['save_data'])){
         die("Fallo al guardar");
     }
     echo "La informacion ah sido guardada";
+
+    $_SESSION['message'] = 'Informacion guardada';
+    $_SESSION['message_type'] = 'success';
+
+    header("Location: index.php");
 }
 ?>

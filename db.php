@@ -1,4 +1,7 @@
 <?php
+//Inicio de sesion para guardar mensajes
+session_start();
+
 // Metodo de conexion a la base de datos guardado en una variable
 $conn = mysqli_connect(
     'localhost',
