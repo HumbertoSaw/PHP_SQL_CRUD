@@ -12,7 +12,7 @@
               </div>
             <?php session_unset(); } ?>
 
-            <div class="card card-body ">
+            <div class="card card-body">
                 <form action="save_data.php" method="POST">
                     <div class="form-group mt-3">
                         <input type="text" class="form-control" name="nControl"  placeholder="Num Control" autofocus>
@@ -39,12 +39,31 @@
                         <input type="text" class="form-control" name="direccion" placeholder="Direccion">
                     </div>
                     <input type="submit" name="save_data" class="btn btn-success btn-block mt-3" value="Guardar">
+                    
+                </form>
+            </div>
+            <?php
+                if(isset($_REQUEST['seleccion'])){
+                    $seleccionada=$_REQUEST['Tablas'];
+                    echo "Intentaste seleccionar la tabla: ".$seleccionada. "";
+                }
+            ?>        
+            <div class="card card-body mt-4">
+                <form action="index.php">
+                    <p>Seleccionar Tabla</p>
+                    <select class="form-select" name="Tablas" aria-label="Default select example">
+                        <option value="Libros">Libros</option>
+                        <option value="Revistas">Revistas</option>
+                        <option value="Investigaciones">Investigaciones</option>
+                        <option value="Software">Software</option>
+                    </select>
+                    <input class="btn btn-primary btn-block mt-3" type="submit" name="seleccion" id="seleccion" value="seleccion">
                 </form>
             </div>
         </div>
         
         <div class="col-md-8"> 
-             <table class="table table-bordered">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No. Control</th>
@@ -60,7 +79,8 @@
                 </thead>
                 <tbody> 
                     <?php 
-                        $query = "SELECT * FROM alumnos";
+                        $query = "SELECT * FROM $seleccionada";
+                        echo "$query";
                         $result_alumnos = mysqli_query($conn, $query);
 
                         while($row = mysqli_fetch_array($result_alumnos)){ ?>
@@ -86,7 +106,7 @@
 
                     <?php  } ?>
                 </tbody>
-                </table>
+            </table>
             </div>
         </div>
     </div>
