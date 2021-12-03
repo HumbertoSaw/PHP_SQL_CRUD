@@ -1,139 +1,149 @@
 <?php include("db.php") ?>
 <?php include("includes/header.php")?>
 
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-4">
 
-            <?php if(isset($_SESSION['message'])) { ?>
-                <div class="alert alert-<?= $_SESSION['message_type'];?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['message']?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            <?php session_unset(); } ?>
 
-            <div class="card card-body">
-                <form action="save_data.php" method="POST">
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="nControl"  placeholder="Num Control" autofocus>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="ape1" placeholder="Apellido Pat.">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="ape2" placeholder="Apellido Mat.">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="fechaNac" placeholder="Fecha Nacimiento">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="numTel" placeholder="Numero Tel.">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="numCel" placeholder="Numero Cel.">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="direccion" placeholder="Direccion">
-                    </div>
-                    <input type="submit" name="save_data" class="btn btn-success btn-block mt-3" value="Guardar">
-                    
-                </form>
-            </div>
-            <?php
-                //Test
-                //if(isset($_REQUEST['seleccion'])){
-                //   $seleccionada=$_REQUEST['Tablas'];
-                //    echo "Intentaste seleccionar la tabla: ".$seleccionada. "";
-                //}
-            ?>
-            <!-- Bootstrap 5  
-            <div class="card card-body mt-4">
-                <form action="index.php">
-                    <p>Seleccionar Tabla</p>
-                    <select class="form-select" name="Tablas" aria-label="Default select example">
-                        <option value="Libros">Libros</option>
-                        <option value="Revistas">Revistas</option>
-                        <option value="Investigaciones">Investigaciones</option>
-                        <option value="Software">Software</option>
-                    </select>
-                    <input class="btn btn-primary btn-block mt-3" type="submit" name="seleccion" id="seleccion" value="seleccion">
-                </form>
-            </div>  -->  
-        </div>
-        
-        <div class="col-md-8"> 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No. Control</th>
-                        <th>Nombre</th>
-                        <th>Apellido Pat.</th>
-                        <th>Apellido Mat.</th>
-                        <th>Fecha Nac.</th>
-                        <th>Numero Tel</th>
-                        <th>Numero Cel.</th>
-                        <th>Direccion</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    <?php 
-                        $query = "SELECT * FROM alumnos";
-                        //echo "$query";
-                        $result = mysqli_query($conn, $query);
+<div class="container mt-3">
+  <h2>Tablas</h2>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#libros">Libros</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#revistas">Revistas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#investigaciones">Invest.</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#software">Software</a>
+    </li>
+  </ul>
 
-                        //*Test
-                        //$columnas = array();
-                        //$sql = "SELECT (COLUMN_NAME)
-                        //FROM INFORMATION_SCHEMA.COLUMNS
-                        //WHERE TABLE_SCHEMA = 'biblioteca_de_itch' AND TABLE_NAME = '$seleccionada';";
-                        //echo "$sql";
-                        //$resultSelect = mysqli_query($conn,$sql);
-                    
-                        //while($rom = mysqli_fetch_assoc($resultSelect )){
-                        //    $columnas[]=$rom;
-                        //}
-                        //echo '<pre>'; print_r($columnas); echo '</pre>';
-                        //Test
-                        
+  <!-- Tab panes -->
+  <div class="tab-content">
 
-                        while($row = mysqli_fetch_array($result)){  ?>
+    <div id="libros" class="container tab-pane active"><br>  
+    <!-- Libros -->
+    <div class="container p-4">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <?php if(isset($_SESSION['message'])) { ?>
+                        <div class="alert alert-<?= $_SESSION['message_type'];?> alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['message']?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php session_unset(); } ?>
+
+                    <div class="card card-body">
+                        <form action="save_data_libros.php" method="POST">
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="IdLibro"  placeholder="Id Libro" autofocus>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="ISBDLibro" placeholder="ISBD Libro">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="TituloLibro" placeholder="Titulo Libro">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="NombreAutorLibro" placeholder="Nombre Autor">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="PimerApellidoAutorLibro" placeholder="Apellido Pat.">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="SegundoApellidoAutorLibro" placeholder="Apellido Mat.">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="FechaPubLibro" placeholder="Fecha Pub.">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="EditorialLibro" placeholder="Editorial">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="EdicionLibro" placeholder="Edicion">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="GeneroLibro" placeholder="Genero">
+                            </div>
+                            <input type="submit" name="save_data_libros" class="btn btn-success btn-block mt-3" value="Guardar">
+                            
+                        </form>
+                    </div>
+                     
+                </div>
                 
-                        <tr>
-                            <td> <?php echo $row['Num_Control']  ?> </td>
-                            <td> <?php echo $row['Nombre']  ?> </td>
-                            <td> <?php echo $row['Ape1']  ?> </td>
-                            <td> <?php echo $row['Ape2']  ?> </td>
-                            <td> <?php echo $row['Fecha_Nac']  ?> </td>
-                            <td> <?php echo $row['Num_Tel']  ?> </td>
-                            <td> <?php echo $row['Num_Cel']  ?> </td>
-                            <td> <?php echo $row['Direccion']  ?> </td>
-                            <td>
-                                <a class="btn btn-secondary mt-1" href="edit_data.php?Num_Control=<?php echo $row['Num_Control'] ?>">
-                                    <i class="fas fa-marker"></i>
-                                </a>
-                                <a class="btn btn-danger mt-1" href="delete_data.php?Num_Control=<?php echo $row['Num_Control'] ?>">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
+                <div class="col-md-8"> 
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id Libro</th>
+                                <th>ISBD Libro</th>
+                                <th>Titulo Libro</th>
+                                <th>Nombre Autor</th>
+                                <th>Apellido Pat.</th>
+                                <th>Apellido Mat.</th>
+                                <th>Fecha Pub.</th>
+                                <th>Editorial</th>
+                                <th>Edicion</th>
+                                <th>Genero</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <?php 
+                                $query = "SELECT * FROM libros";
+                                //echo "$query";
+                                $result = mysqli_query($conn, $query);                              
 
-                    <?php } ?>
-                </tbody>
-            </table>
+                                while($row = mysqli_fetch_array($result)){  ?>
+                        
+                                <tr>
+                                    <td> <?php echo $row['Id_Libro']  ?> </td>
+                                    <td> <?php echo $row['ISBD_Libro']  ?> </td>
+                                    <td> <?php echo $row['Titulo_Libro']  ?> </td>
+                                    <td> <?php echo $row['Nombre_Autor_Libro']  ?> </td>
+                                    <td> <?php echo $row['Pimer_Apellido_Autor_Libro']  ?> </td>
+                                    <td> <?php echo $row['Segundo_Apellido_Autor_Libro']  ?> </td>
+                                    <td> <?php echo $row['Fecha_Pub_Libro']  ?> </td>
+                                    <td> <?php echo $row['Editorial_Libro']  ?> </td>
+                                    <td> <?php echo $row['Edicion_Libro']  ?> </td>
+                                    <td> <?php echo $row['Genero_Libro']  ?> </td>
+                                    <td>
+                                        <a class="btn btn-secondary mt-1" href="edit_data_libros.php?Id_Libro=<?php echo $row['Id_Libro'] ?>">
+                                            <i class="fas fa-marker"></i>
+                                        </a>
+                                        <a class="btn btn-danger mt-1" href="delete_data_libros.php?Id_Libro=<?php echo $row['Id_Libro'] ?>">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div id="revistas" class="container tab-pane fade"><br>
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="investigaciones" class="container tab-pane fade"><br>
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="software" class="container tab-pane fade"><br>
+      <h3>Menu 3</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+  </div>
 </div>
 
-
 <?php include("includes/footer.php")?>
-
-
-
-
-
-
-+

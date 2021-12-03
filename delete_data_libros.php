@@ -2,9 +2,9 @@
 
 include("db.php");
 
-if (isset($_GET['Num_Control'])){
-    $id = $_GET['Num_Control'];
-    $query = "DELETE FROM Alumnos WHERE Num_Control=$id";
+if (isset($_GET['Id_Libro'])){
+    $id = $_GET['Id_Libro'];
+    $query = "DELETE FROM libros WHERE Id_Libro=$id";
     $result = mysqli_query($conn, $query);
     if(!$result){
         die("Fallo al eliminar");
