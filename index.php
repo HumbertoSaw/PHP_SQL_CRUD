@@ -43,11 +43,13 @@
                 </form>
             </div>
             <?php
-                if(isset($_REQUEST['seleccion'])){
-                    $seleccionada=$_REQUEST['Tablas'];
-                    echo "Intentaste seleccionar la tabla: ".$seleccionada. "";
-                }
-            ?>        
+                //Test
+                //if(isset($_REQUEST['seleccion'])){
+                //   $seleccionada=$_REQUEST['Tablas'];
+                //    echo "Intentaste seleccionar la tabla: ".$seleccionada. "";
+                //}
+            ?>
+            <!-- Bootstrap 5  
             <div class="card card-body mt-4">
                 <form action="index.php">
                     <p>Seleccionar Tabla</p>
@@ -59,7 +61,7 @@
                     </select>
                     <input class="btn btn-primary btn-block mt-3" type="submit" name="seleccion" id="seleccion" value="seleccion">
                 </form>
-            </div>
+            </div>  -->  
         </div>
         
         <div class="col-md-8"> 
@@ -79,12 +81,27 @@
                 </thead>
                 <tbody> 
                     <?php 
-                        $query = "SELECT * FROM $seleccionada";
-                        echo "$query";
-                        $result_alumnos = mysqli_query($conn, $query);
+                        $query = "SELECT * FROM alumnos";
+                        //echo "$query";
+                        $result = mysqli_query($conn, $query);
 
-                        while($row = mysqli_fetch_array($result_alumnos)){ ?>
+                        //*Test
+                        //$columnas = array();
+                        //$sql = "SELECT (COLUMN_NAME)
+                        //FROM INFORMATION_SCHEMA.COLUMNS
+                        //WHERE TABLE_SCHEMA = 'biblioteca_de_itch' AND TABLE_NAME = '$seleccionada';";
+                        //echo "$sql";
+                        //$resultSelect = mysqli_query($conn,$sql);
+                    
+                        //while($rom = mysqli_fetch_assoc($resultSelect )){
+                        //    $columnas[]=$rom;
+                        //}
+                        //echo '<pre>'; print_r($columnas); echo '</pre>';
+                        //Test
+                        
 
+                        while($row = mysqli_fetch_array($result)){  ?>
+                
                         <tr>
                             <td> <?php echo $row['Num_Control']  ?> </td>
                             <td> <?php echo $row['Nombre']  ?> </td>
@@ -104,13 +121,13 @@
                             </td>
                         </tr>
 
-                    <?php  } ?>
+                    <?php } ?>
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
 </div>
+
 
 <?php include("includes/footer.php")?>
 
