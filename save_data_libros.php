@@ -15,9 +15,6 @@ if(isset($_POST['save_data_libros'])){
     $EdicionLibro = $_POST['EdicionLibro'];
     $GeneroLibro = $_POST['GeneroLibro'];
 
-    //echo $numeroControl;
-    //echo $nombre;
-
     $query = "INSERT INTO libros (Id_Libro, ISBD_Libro, Titulo_Libro, Nombre_Autor_Libro, Pimer_Apellido_Autor_Libro, Segundo_Apellido_Autor_Libro, Fecha_Pub_Libro, Editorial_Libro, Edicion_Libro, Genero_Libro)
     VALUES ('$IdLibro', '$ISBDLibro', '$TituloLibro', '$NombreAutorLibro', '$PimerApellidoAutorLibro', '$SegundoApellidoAutorLibro', '$FechaPubLibro', '$EditorialLibro', '$EdicionLibro', '$GeneroLibro' )";
 
@@ -25,7 +22,6 @@ if(isset($_POST['save_data_libros'])){
     if( ! $result){
         die("Fallo al guardar");
     }
-    //echo "La informacion ah sido guardada";
 
     $_SESSION['message'] = 'Informacion Guardada';
     $_SESSION['message_type'] = 'success';
