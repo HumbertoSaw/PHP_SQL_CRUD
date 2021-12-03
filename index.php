@@ -323,8 +323,93 @@
 
         <div id="software" class="container tab-pane fade">
             <br>
-            <h3>Menu 3</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            <!-- Software -->
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <?php if(isset($_SESSION['message'])) { ?>
+                        <div class="alert alert-<?= $_SESSION['message_type'];?> alert-dismissible fade show" role="alert">
+                            <?= $_SESSION['message']?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php session_unset(); } ?>
+                        <div class="card card-body">
+                            <form action="save_data_software.php" method="POST">
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="IdSoftware"  placeholder="Id Software" autofocus>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="NombreSoftware" placeholder="Nombre Software">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="EmpresaSoftware" placeholder="Empresa">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="DesarrolladorPrincipal" placeholder="Desarrollador(a)">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="FechaLanzamiento" placeholder="Fecha Lanzamiento">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="VersionSoftware" placeholder="Version">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="TipoSoftware" placeholder="Tipo">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="CompatibilidadSO" placeholder="Compatibilidad">
+                                </div>
+                                <input type="submit" name="save_data_software" class="btn btn-success btn-block mt-3" value="Guardar">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id Software</th>
+                                    <th>Nombre Software</th>
+                                    <th>Empresa</th>
+                                    <th>Desarrollador(a)</th>
+                                    <th>Fecha Lanzamiento</th>
+                                    <th>Version</th>
+                                    <th>Tipo</th>
+                                    <th>Compatibilidad</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    $query = "SELECT * FROM software";
+                                    //echo "$query";
+                                    $result = mysqli_query($conn, $query);                              
+                                    
+                                    while($row = mysqli_fetch_array($result)){  ?>
+                                <tr>
+                                    <td> <?php echo $row['Id_Software']  ?> </td>
+                                    <td> <?php echo $row['Nombre_Software']  ?> </td>
+                                    <td> <?php echo $row['Empresa_Software']  ?> </td>
+                                    <td> <?php echo $row['Desarrollador_Principal']  ?> </td>
+                                    <td> <?php echo $row['Fecha_Lanzamiento']  ?> </td>
+                                    <td> <?php echo $row['Version_Software']  ?> </td>
+                                    <td> <?php echo $row['Tipo_Software']  ?> </td>
+                                    <td> <?php echo $row['Compatibilidad_SO']  ?> </td>
+
+                                    <td>
+                                        <a class="btn btn-secondary mt-1" href="edit_data_software.php?Id_Software=<?php echo $row['Id_Software'] ?>">
+                                        <i class="fas fa-marker"></i>
+                                        </a>
+                                        <a class="btn btn-danger mt-1" href="delete_data_software.php?Id_Software=<?php echo $row['Id_Software'] ?>">
+                                        <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
