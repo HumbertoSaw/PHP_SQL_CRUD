@@ -14,8 +14,7 @@ if(isset($_POST['save_data_software'])){
     $CompatibilidadSO = $_POST['CompatibilidadSO'];
 
 
-    $query = "INSERT INTO software (Id_Software, Nombre_Software, Empresa_Software, Desarrollador_Principal, Fecha_Lanzamiento, Version_Software, Tipo_Software, Compatibilidad_SO)
-    VALUES ('$IdSoftware', '$NombreSoftware', '$EmpresaSoftware', '$DesarrolladorPrincipal', '$FechaLanzamiento', '$VersionSoftware', '$TipoSoftware', '$CompatibilidadSO')";
+    $query = "CALL altaSoftware('$IdSoftware', '$NombreSoftware', '$EmpresaSoftware', '$DesarrolladorPrincipal', '$FechaLanzamiento', '$VersionSoftware', '$TipoSoftware', '$CompatibilidadSO')";
 
     $result = mysqli_query($conn, $query);
     if( ! $result){

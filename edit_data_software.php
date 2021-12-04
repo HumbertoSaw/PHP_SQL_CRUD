@@ -31,15 +31,15 @@
        $TipoSoftware  = $_POST['Tiposoftware'];
        $CompatibilidadSO = $_POST['CompatibilidadsO'];
 
-      $query = "UPDATE software set 
-      Nombre_Software='$NombreSoftware', 
-      Empresa_Software='$EmpresaSoftware', 
-      Desarrollador_Principal='$DesarrolladorPrincipal', 
-      Fecha_Lanzamiento='$FechaLanzamiento', 
-      Version_Software='$VersionSoftware',
-      Tipo_Software='$TipoSoftware',
-      Compatibilidad_SO='$CompatibilidadSO'
-      WHERE Id_Software=$IdSoftware";
+      $query = "CALL modificarSoftware (
+      '$IdSoftware',  
+      '$NombreSoftware', 
+      '$EmpresaSoftware', 
+      '$DesarrolladorPrincipal', 
+      '$FechaLanzamiento', 
+      '$VersionSoftware',
+      '$TipoSoftware',
+      '$CompatibilidadSO')";
 
       mysqli_query($conn, $query);
 

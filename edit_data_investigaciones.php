@@ -33,16 +33,7 @@
        $EdicionInvestigacion = $_POST['Edicion_investigacion'];
        $FechaTerminacionInvestigacion = $_POST['Fecha_Terminacion_investigacion'];
 
-      $query = "UPDATE investigaciones set  
-      Fecha_Investigacion='$FechaInvestigacion', 
-      Nombre_Investigacion='$NombreInvestigacion', 
-      Tema_Investigacion='$TemaInvestigacion', 
-      Nombre_Autor_Principal='$NombreAutorPrincipal', 
-      Apellido_Paterno_Autor_Principal='$ApellidoPaternoAutorPrincipal',
-      Apellido_Materno_Autor_Principal='$ApellidoMaternoAutorPrincipal',
-      Edicion_Investigacion='$EdicionInvestigacion',
-      Fecha_Terminacion_Investigacion='$FechaTerminacionInvestigacion'
-      WHERE Id_Investigacion=$IdInvestigacion";
+       $query = "CALL modificarInvestigaciones ('$IdInvestigacion', '$FechaInvestigacion', '$NombreInvestigacion', '$TemaInvestigacion', '$NombreAutorPrincipal', '$ApellidoPaternoAutorPrincipal','$ApellidoMaternoAutorPrincipal','$EdicionInvestigacion','$FechaTerminacionInvestigacion')";
 
       mysqli_query($conn, $query);
 

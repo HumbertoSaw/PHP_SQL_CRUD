@@ -4,7 +4,7 @@ include("db.php");
 
 if (isset($_GET['Id_Libro'])){
     $id = $_GET['Id_Libro'];
-    $query = "DELETE FROM libros WHERE Id_Libro=$id";
+    $query = "CALL bajaLibros ('$id')";
     $result = mysqli_query($conn, $query);
     if(!$result){
         die("Fallo al eliminar");

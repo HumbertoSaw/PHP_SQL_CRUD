@@ -16,8 +16,7 @@ if(isset($_POST['save_data_revistas'])){
     $PrimerApellidoAutorRevista = $_POST['PrimerApellidoAutorRevista'];
     $SegundoApellidoAutorRevista = $_POST['SegundoApellidoAutorRevista'];
 
-    $query = "INSERT INTO revistas (Id_Revista, ISBN_Revista, Nombre_Revista, Anio_Revista, Editorial_Revista, Ciudad_Revista, Volumen_Revista, Numero_Revista, Nombre_Autor_Revista, Primer_Apellido_Autor_Revista, Segundo_Apellido_Autor_Revista)
-    VALUES ('$IdRevista', '$ISBNRevista', '$NombreRevista', '$AnioRevista', '$EditorialRevista', '$CiudadRevista', '$VolumenRevista', '$NumeroRevista', '$NombreAutorRevista', '$PrimerApellidoAutorRevista', '$SegundoApellidoAutorRevista' )";
+    $query = "CALL altaRevistas ('$IdRevista', '$ISBNRevista', '$NombreRevista', '$AnioRevista', '$EditorialRevista', '$CiudadRevista', '$VolumenRevista', '$NumeroRevista', '$NombreAutorRevista', '$PrimerApellidoAutorRevista', '$SegundoApellidoAutorRevista' )";
 
     $result = mysqli_query($conn, $query);
     if( ! $result){

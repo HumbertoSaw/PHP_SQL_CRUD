@@ -4,7 +4,7 @@ include("db.php");
 
 if (isset($_GET['Id_Revista'])){
     $id = $_GET['Id_Revista'];
-    $query = "DELETE FROM revistas WHERE Id_Revista=$id";
+    $query = "CALL bajaRevistas ('$id')";
     $result = mysqli_query($conn, $query);
     if(!$result){
         die("Fallo al eliminar");

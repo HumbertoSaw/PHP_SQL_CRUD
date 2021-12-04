@@ -35,17 +35,7 @@
        $EdicionLibro = $_POST['Edicionlibro'];
        $GeneroLibro = $_POST['Generolibro'];
 
-      $query = "UPDATE libros set 
-      ISBD_Libro='$ISBDLibro', 
-      Titulo_Libro='$TituloLibro', 
-      Nombre_Autor_Libro='$NombreAutorLibro', 
-      Pimer_Apellido_Autor_Libro='$PimerApellidoAutorLibro', 
-      Segundo_Apellido_Autor_Libro='$SegundoApellidoAutorLibro', 
-      Fecha_Pub_Libro='$FechaPubLibro',
-      Editorial_Libro='$EditorialLibro',
-      Edicion_Libro='$EdicionLibro',
-      Genero_Libro='$GeneroLibro'
-      WHERE Id_Libro=$IdLibro";
+      $query = "CALL modificarLibros ('$ISBDLibro', '$TituloLibro', '$NombreAutorLibro', '$PimerApellidoAutorLibro', '$SegundoApellidoAutorLibro', '$FechaPubLibro','$EditorialLibro','$EdicionLibro','$GeneroLibro')";
 
       mysqli_query($conn, $query);
 

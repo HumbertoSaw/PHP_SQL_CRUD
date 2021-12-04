@@ -14,8 +14,7 @@ if(isset($_POST['save_data_investigaciones'])){
     $EdicionInvestigacion = $_POST['EdicionInvestigacion'];
     $FechaTerminacionInvestigacion = $_POST['FechaTerminacionInvestigacion'];
 
-    $query = "INSERT INTO investigaciones (Id_Investigacion, Fecha_Investigacion, Nombre_Investigacion, Tema_Investigacion, Nombre_Autor_Principal, Apellido_Paterno_Autor_Principal, Apellido_Materno_Autor_Principal, Edicion_Investigacion, Fecha_Terminacion_Investigacion)
-    VALUES ('$IdLIdInvestigacionibro', '$FechaInvestigacion', '$NombreInvestigacion', '$TemaInvestigacion', '$NombreAutorPrincipal', '$ApellidoPaternoAutorPrincipal', '$ApellidoMaternoAutorPrincipal', '$EdicionInvestigacion', '$FechaTerminacionInvestigacion')";
+    $query = "CALL altaInvetigaciones ('$IdLIdInvestigacionibro', '$FechaInvestigacion', '$NombreInvestigacion', '$TemaInvestigacion', '$NombreAutorPrincipal', '$ApellidoPaternoAutorPrincipal', '$ApellidoMaternoAutorPrincipal', '$EdicionInvestigacion', '$FechaTerminacionInvestigacion')";
 
     $result = mysqli_query($conn, $query);
     if( ! $result){

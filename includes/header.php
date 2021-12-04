@@ -11,7 +11,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous">
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/07551f1700.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/07551f1700.js" crossorigin="anonymous"></script>  
 </head>
 <body>
 

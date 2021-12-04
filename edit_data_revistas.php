@@ -37,18 +37,18 @@
        $PrimerApellidoAutorRevista = $_POST['PrimerApellidoAutorrevista'];
        $SegundoApellidoAutorRevista = $_POST['SegundoApellidoAutorrevista'];
 
-      $query = "UPDATE revistas set 
-      ISBN_Revista='$ISBNRevista', 
-      Nombre_Revista='$NombreRevista', 
-      Anio_Revista='$AnioRevista', 
-      Editorial_Revista='$EditorialRevista', 
-      Ciudad_Revista='$CiudadRevista',
-      Volumen_Revista='$VolumenRevista',
-      Numero_Revista='$NumeroRevista',
-      Nombre_Autor_Revista='$NombreAutorRevista',
-      Primer_Apellido_Autor_Revista='$PrimerApellidoAutorRevista',
-      Segundo_Apellido_Autor_Revista='$SegundoApellidoAutorRevista'
-      WHERE Id_Revista=$IdRevista";
+      $query = "CALL modificarRevistas (
+      '$IdRevista',
+      '$ISBNRevista', 
+      '$NombreRevista', 
+      '$AnioRevista', 
+      '$EditorialRevista', 
+      '$CiudadRevista',
+      '$VolumenRevista',
+      '$NumeroRevista',
+      '$NombreAutorRevista',
+      '$PrimerApellidoAutorRevista',
+      '$SegundoApellidoAutorRevista')";
 
       mysqli_query($conn, $query);
 
