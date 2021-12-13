@@ -35,7 +35,7 @@
        $EdicionLibro = $_POST['Edicionlibro'];
        $GeneroLibro = $_POST['Generolibro'];
 
-      $query = "CALL modificarLibros ('$ISBDLibro', '$TituloLibro', '$NombreAutorLibro', '$PimerApellidoAutorLibro', '$SegundoApellidoAutorLibro', '$FechaPubLibro','$EditorialLibro','$EdicionLibro','$GeneroLibro')";
+      $query = "CALL modificarLibros ('$IdLibro','$ISBDLibro', '$TituloLibro', '$NombreAutorLibro', '$PimerApellidoAutorLibro', '$SegundoApellidoAutorLibro', '$FechaPubLibro','$EditorialLibro','$EdicionLibro','$GeneroLibro')";
 
       mysqli_query($conn, $query);
 
